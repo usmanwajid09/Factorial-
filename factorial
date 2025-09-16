@@ -1,0 +1,28 @@
+[org 0x0100]
+jmp start
+num1: dw 6
+num2: dw 0
+factorial: dw 0
+level:dw 5
+start:
+
+
+mov ax,[num1]
+mov bx,[num2]
+mov dx,[level]
+mov cx,0 
+Outer:
+mov cx,dx
+sub dx,1 
+Inner:
+add bx,ax
+sub cx,1
+jne Inner
+mov ax,bx
+mov bx,0
+cmp dx,cx
+jne Outer
+mov [factorial],ax
+
+mov ax,0x4c00
+int 0x21
